@@ -183,3 +183,12 @@ body {
     font-size: 12px;
     color: antiquewhite;
  }
+ 
+ a{
+    text-align: center;
+    font-size: 20px;
+    color: #45f4ff;
+    margin-top: 50vh;
+    border-top: 40px;
+    margin-left: 40vh;
+ }

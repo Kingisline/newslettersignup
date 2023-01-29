@@ -11,12 +11,32 @@ const https = require("https");
 const app = express();
 
 app.use(express.static("public"));
+app.use('/css', express.static(__dirname + 'public/css'))
+app.use('/img', express.static(__dirname + 'public/img'))
+app.use('/js', express.static(__dirname + 'public/js'))
 app.use(bodyParser.urlencoded({extended: true}));
+
+// views
+app.set('views', './views');
+app.set('view engine', 'ejs');
 
 
 
 app.get("/", function(req, res){
-    res.sendFile(__dirname + "/index.html");
+    res.render("index");
+});
+
+app.get("/about", function(req, res){
+    res.render("about");
+
+});
+
+app.get("/success", function(req, res){
+    res.render("success");
+});
+
+app.get("/failure", function(req, res){
+    res.render("failure");
 });
 
 app.post("/", function(req, res) {
@@ -52,6 +72,12 @@ app.post("/", function(req, res) {
     }
 
     const request =  https.request(url, options, function(response){
+
+        if(response.statusCode==200) {
+            res.render("success")
+        } else {
+            res.sendFile("failure")
+        }
         response.on("data", function(data){
             console.log(JSON.parse(data));
         })
@@ -68,6 +94,3 @@ app.listen(process.env.PORT || 5050, function(){
     console.log("Server is Started on port 5050");
 });
 
-// 743bcd55de15c11f9df364e83186d7ce-us17
-
-// dfecc024b5
