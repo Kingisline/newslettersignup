@@ -76,7 +76,7 @@ app.post("/", function(req, res) {
         if(response.statusCode==200) {
             res.render("success")
         } else {
-            res.sendFile("failure")
+            res.render("failure")
         }
         response.on("data", function(data){
             console.log(JSON.parse(data));

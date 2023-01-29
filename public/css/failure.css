@@ -13,7 +13,7 @@ body{
     background-color: #F1F7B5;
 }
 
-button{
+a{
     /* text-align: center; */
     font-size: 50px;
     margin-left: 80vh;
@@ -21,6 +21,6 @@ button{
     color: #FF597B;
 }
 
-button:hover{
+a:hover{
     color: #DC0000;
 }
